@@ -37,7 +37,12 @@ const siteContent = {
   },
 };
 
-//Set src for images
+//Selectors for global elements
+let body = document.getElementsByTagName("body")[0];
+let h4s = document.getElementsByTagName("h4");
+
+
+// ***Set src for images***
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"]);
 let ctaImg = document.getElementById("cta-img");
@@ -75,6 +80,9 @@ ctaH1.textContent = siteContent["cta"]["h1"];
 let ctaButton = document.querySelector(".cta-text button");
 ctaButton.textContent = siteContent["cta"]["button"];
 
+// ***main-content***
+let mainSection = document.querySelector(".main-content");
+
 //top-content
 let featuresH4 = document.querySelector(".top-content h4");
 featuresH4.textContent = siteContent["main-content"]["features-h4"];
@@ -102,7 +110,7 @@ visionH4.textContent = siteContent["main-content"]["vision-h4"];
 let visionP = document.querySelector(".bottom-content .text-content:last-of-type p");
 visionP.textContent = siteContent["main-content"]["vision-content"];
 
-//contact
+//***contact***
 let contactH4 = document.querySelector(".contact h4");
 contactH4.textContent = siteContent["contact"]["contact-h4"];
 let contactAddress = document.querySelector(".contact p");
@@ -112,7 +120,76 @@ contactPhone.textContent = siteContent["contact"]["phone"];
 let contactEmail = document.querySelector(".contact p:last-of-type");
 contactEmail.textContent = siteContent["contact"]["email"];
 
-//footer
+//***footer***
+let footer = document.getElementsByTagName("footer")[0];
 let footerCopyright = document.querySelector("footer p");
 footerCopyright.textContent = siteContent["footer"]["copyright"];
 
+// ***Add button for user to click to change styling***
+
+const styleButton = document.createElement("button");
+styleButton.textContent = "Change to Dark Appearance";
+styleButton.style.cssText = "background: white; \
+  border: 1px double black; \
+  font-size: 1rem; \
+  padding: 0.75rem 1rem; \
+  margin: 1.25rem";
+footer.prepend(styleButton);
+styleButton.onmouseover = function() {
+  this.style.background = "black";
+  this.style.color = "white";
+}
+styleButton.onmouseout = function() {
+  this.style.background = "white";
+  this.style.color = "black";
+}
+
+let dark = true;
+styleButton.onclick = function() {
+  navAs = document.querySelectorAll("nav a");
+  
+  if (dark) {
+    console.log("Clicked");
+    body.style.background = "black";
+    body.style.color = "white";
+    styleButton.textContent = "Change to Light Appearance";
+    
+    //add color to nav, h4, cta button, copyright
+    for (let i=0; i<navAs.length; i++) { 
+      navAs[i].style.color = "#F494DE";
+    }
+    for (let i=0; i<h4s.length; i++) { 
+      h4s[i].style.color = "#F494DE";
+    }
+    ctaButton.style.background = "#84CF9B";
+    footerCopyright.style.color = "#03C5FD";
+
+    // put borders on imgs
+    ctaImg.style.border = "1px solid white";
+    ctaImg.style.borderRadius = "50%";
+    midImg.style.borderTop = "1px solid white";
+    midImg.style.borderBottom = "1px solid white";
+    mainSection.style.borderBottom = "2px solid white";
+    mainSection.style.borderTop = "2px solid white";
+
+    dark = false;
+  } else {
+    // Reset everything to light appearance
+    body.style.background = "white";
+    body.style.color = "black";
+    styleButton.textContent = "Change to Dark Appearance";
+    
+    mainSection.style.borderBottom = "2px solid black";
+    mainSection.style.borderBottom = "2px solid white";
+    for (let i=0; i<navAs.length; i++) { 
+      navAs[i].style.color = "#b0b0b0";
+    }
+    for (let i=0; i<h4s.length; i++) { 
+      h4s[i].style.color = "black";
+    }
+    ctaButton.style.background = "white";
+    footerCopyright.style.color = "black";
+    dark = true;
+  }
+  
+}
