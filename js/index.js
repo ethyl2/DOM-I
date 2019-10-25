@@ -45,14 +45,31 @@ ctaImg.setAttribute('src', siteContent["cta"]["img-src"]);
 let midImg = document.getElementById("middle-img");
 midImg.setAttribute('src', siteContent["main-content"]["middle-img-src"]);
 
-//nav
+
+// ***nav***
+let nav = document.getElementsByTagName("nav")[0];
+
 let navAs = document.querySelectorAll("nav a");
 let navAsText = Object.values(siteContent["nav"]);
 for (let i=0; i<navAs.length; i++) {
   navAs[i].textContent = navAsText[i];
+  navAs[i].style.color = "green";
 }
 
-//cta
+//Utilize .appendChild() and .prepend() to add two new 
+//items to the navigation system. You can call them whatever you want.
+const newNavItem1 = document.createElement("a");
+newNavItem1.textContent = "Log In";
+newNavItem1.style.color = "green";
+nav.appendChild(newNavItem1);
+
+const newNavItem2 = document.createElement("a");
+newNavItem2.textContent = "Store";
+newNavItem2.style.color = "green";
+nav.prepend(newNavItem2);
+
+
+// ***cta***
 let ctaH1 = document.querySelector(".cta-text h1");
 ctaH1.textContent = siteContent["cta"]["h1"];
 let ctaButton = document.querySelector(".cta-text button");
