@@ -37,6 +37,36 @@ const siteContent = {
   },
 };
 
-// Example: Update the img src for the logo
+//Set src for images
 let logo = document.getElementById("logo-img");
-logo.setAttribute('src', siteContent["nav"]["img-src"])
+logo.setAttribute('src', siteContent["nav"]["img-src"]);
+let ctaImg = document.getElementById("cta-img");
+ctaImg.setAttribute('src', siteContent["cta"]["img-src"]);
+let midImg = document.getElementById("middle-img");
+midImg.setAttribute('src', siteContent["main-content"]["middle-img-src"]);
+
+//nav
+let navAs = document.querySelectorAll("nav a");
+let navAsText = Object.values(siteContent["nav"]);
+for (let i=0; i<navAs.length; i++) {
+  navAs[i].textContent = navAsText[i];
+}
+
+//cta
+let ctaH1 = document.querySelector(".cta-text h1");
+ctaH1.textContent = siteContent["cta"]["h1"];
+let ctaButton = document.querySelector(".cta-text button");
+ctaButton.textContent = siteContent["cta"]["button"];
+
+//top-content
+let featuresH4 = document.querySelector(".top-content h4");
+featuresH4.textContent = siteContent["main-content"]["features-h4"];
+let featuresP = document.querySelector(".text-content p");
+featuresP.textContent = siteContent["main-content"]["features-content"];
+
+let aboutH4 = document.querySelector(".top-content .text-content:last-of-type h4");
+aboutH4.textContent = siteContent["main-content"]["about-h4"];
+let aboutP = document.querySelector(".top-content .text-content:last-of-type p");
+aboutP.textContent = siteContent["main-content"]["about-content"];
+
+
