@@ -189,9 +189,10 @@ styleButton.onmouseout = function() {
 let dark = true;
 styleButton.onclick = function() {
   navAs = document.querySelectorAll("nav a");
+  h4s = document.getElementsByTagName("h4");
   
   if (dark) {
-    console.log("Clicked");
+    
     body.style.background = "black";
     body.style.color = "white";
     styleButton.textContent = "Change to Light Appearance";
@@ -309,6 +310,9 @@ contentButton.onclick = function() {
   //contact
   contactAddress.textContent = siteContent2["contact"]["address"];
   contactEmail.textContent = siteContent2["contact"]["email"];
+
+  //contentButton -- disappears once clicked. Refresh page to reload original content.
+  contentButton.style.display = "none";
 
   //footer
   footerCopyright.textContent = siteContent2["footer"]["copyright"];
