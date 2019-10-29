@@ -23,8 +23,8 @@ const onesEl = document.getElementById("secondOnes");
 const tensEl = document.getElementById("secondTens");
 
 function tenSecTimer() {
-    
-    setInterval(timeIt, 10);
+
+    let timer = setInterval(timeIt, 10);
     function timeIt() {
         if (tens < 1) {
             msHundreds++;
@@ -44,6 +44,7 @@ function tenSecTimer() {
             for(let i=0; i<digits.length; i++) {
                 digits[i].classList.add("redDigit");
             }
+            clearInterval(timer);
         }  
         tensEl.textContent = tens.toString();
         onesEl.textContent = ones.toString();
@@ -67,7 +68,6 @@ startButton.onclick = function(event) {
     event.target.disabled = true;
     tenSecTimer();
     event.stopPropagation();
-    body.classList.add("rotateElement");
 }
 
 /*SG3: Once you have finished SG2, add new new button called 
